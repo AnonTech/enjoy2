@@ -26,7 +26,7 @@
 }
 
 -(id) findSubActionForValue: (IOHIDValueRef) value {
-    int raw = IOHIDValueGetIntegerValue(value);
+    int raw =(int)IOHIDValueGetIntegerValue(value);
     double parsed = [self getRealValue: raw];
     
     if ([[subActions objectAtIndex: 2] active]) {
@@ -47,7 +47,7 @@
 }
 
 -(void) notifyEvent: (IOHIDValueRef) value {
-    int raw = IOHIDValueGetIntegerValue(value);
+    int raw =(int) IOHIDValueGetIntegerValue(value);
     double parsed = [self getRealValue: raw];
     
     [[subActions objectAtIndex: 2] setActive: (fabs(parsed) > analogThreshold)];

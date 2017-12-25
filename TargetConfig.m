@@ -30,7 +30,14 @@
 }
 
 -(void) trigger {
-	[[[[NSApplication sharedApplication] delegate] configsController] activateConfig:config forApplication: NULL];
+    ConfigsController* configsController=[[[NSApplication sharedApplication] delegate] configsController];
+    origConfig=[configsController currentConfig];
+	[configsController activateConfig:config forApplication: NULL];
 }
+
+-(void) untrigger: (JoystickController *)jc {
+    //[[[[NSApplication sharedApplication] delegate] configsController]activateConfig:origConfig forApplication: NULL];
+}
+
 
 @end

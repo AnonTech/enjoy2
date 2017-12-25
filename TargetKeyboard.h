@@ -10,13 +10,18 @@
 @class Target;
 
 @interface TargetKeyboard : Target {
-	CGKeyCode vk;
+    CGKeyCode vk;
+    unsigned long mods;
 	NSString* descr;
 }
 
 @property (readwrite) CGKeyCode vk;
+@property(readwrite) unsigned long mods;
 @property (readwrite, copy) NSString* descr;
 
+
 +(TargetKeyboard*) unstringifyImpl: (NSArray*) comps;
++(int) cmod;
++(void) setCmod: (int) newmod;
 
 @end

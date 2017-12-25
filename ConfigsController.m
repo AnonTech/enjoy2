@@ -138,7 +138,7 @@
 }
 
 -(int)numberOfRowsInTableView: (NSTableView*)table {
-	return [configs count];
+	return (int)[configs count];
 }
 
 -(BOOL)tableView: (NSTableView*)view shouldEditTableColumn: (NSTableColumn*) column row: (int) index {

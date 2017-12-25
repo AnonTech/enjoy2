@@ -11,7 +11,8 @@
 @class Target;
 
 @interface TargetConfig : Target {
-	Config *config;
+    Config *config;
+    Config *origConfig;
 }
 
 @property(readwrite, retain) Config* config;

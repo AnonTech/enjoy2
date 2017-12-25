@@ -15,18 +15,23 @@
 	[[[NSApplication sharedApplication] mainWindow] makeFirstResponder: sender];
 	[self commit];
 }
+-(IBAction)mabsoluteDirChanged:(id)sender {
+	[radioButtons setState: 1 atRow: 7 column: 0];
+	[[[NSApplication sharedApplication] mainWindow] makeFirstResponder: sender];
+	[self commit];
+}
 -(IBAction)mdirChanged:(id)sender {
-    [radioButtons setState: 1 atRow: 3 column: 0];
+	[radioButtons setState: 1 atRow: 3 column: 0];
 	[[[NSApplication sharedApplication] mainWindow] makeFirstResponder: sender];
 	[self commit];
 }
 -(IBAction)mbtnChanged:(id)sender {
-    [radioButtons setState: 1 atRow: 4 column: 0];
+	[radioButtons setState: 1 atRow: 4 column: 0];
 	[[[NSApplication sharedApplication] mainWindow] makeFirstResponder: sender];
 	[self commit];
 }
 -(IBAction)sdirChanged:(id)sender {
-    [radioButtons setState: 1 atRow: 5 column: 0];
+	[radioButtons setState: 1 atRow: 5 column: 0];
 	[[[NSApplication sharedApplication] mainWindow] makeFirstResponder: sender];
 	[self commit];
 }
@@ -39,6 +44,7 @@
 		case 1: // key
 			if([keyInput hasKey]) {
 				TargetKeyboard* k = [[TargetKeyboard alloc] init];
+                [k setMods: [keyInput mods]];
 				[k setVk: [keyInput vk]];
 				[k setDescr: [keyInput descr]];
 				return k;
@@ -50,39 +56,45 @@
 			[c setConfig: [[configsController configs] objectAtIndex: [configPopup indexOfSelectedItem]]];
 			return c;
 		}
-        case 3: {
-            // mouse X/Y
-            TargetMouseMove *mm = [[TargetMouseMove alloc] init];
-            [mm setDir: [mouseDirSelect selectedSegment]];
-            return mm;
-        }
-        case 4: {
-            // mouse button
-            TargetMouseBtn *mb = [[TargetMouseBtn alloc] init];
-            if ([mouseBtnSelect selectedSegment] == 0) {
-                [mb setWhich: kCGMouseButtonLeft];
-            }
-            else {
-                [mb setWhich: kCGMouseButtonRight];
-            }
-            return mb;
-        }
-        case 5: {
-            // scroll
-            TargetMouseScroll *ms = [[TargetMouseScroll alloc] init];
-            if ([scrollDirSelect selectedSegment] == 0) {
-                [ms setHowMuch: -1];
-            }
-            else {
-                [ms setHowMuch: 1];
-            }
-            return ms;
-        }
-        case 6: {
-            // toggle mouse scope
-            TargetToggleMouseScope *tms = [[TargetToggleMouseScope alloc] init];
-            return tms;
-        }
+		case 3: {
+			// mouse X/Y
+			TargetMouseMove *mm = [[TargetMouseMove alloc] init];
+			[mm setDir: (int)[mouseDirSelect selectedSegment]];
+			return mm;
+		}
+		case 4: {
+			// mouse button
+			TargetMouseBtn *mb = [[TargetMouseBtn alloc] init];
+			if ([mouseBtnSelect selectedSegment] == 0) {
+				[mb setWhich: kCGMouseButtonLeft];
+			}
+			else {
+				[mb setWhich: kCGMouseButtonRight];
+			}
+			return mb;
+		}
+		case 5: {
+			// scroll
+			TargetMouseScroll *ms = [[TargetMouseScroll alloc] init];
+			if ([scrollDirSelect selectedSegment] == 0) {
+				[ms setHowMuch: -1];
+			}
+			else {
+				[ms setHowMuch: 1];
+			}
+			return ms;
+		}
+		case 6: {
+			// toggle mouse scope
+			TargetToggleMouseScope *tms = [[TargetToggleMouseScope alloc] init];
+			return tms;
+		}
+		case 7: {
+			// mouse absolute X/Y
+			TargetMouseAbsolute *ma = [[TargetMouseAbsolute alloc] init];
+			[ma setDir: (int)[mouseAbsoluteDirSelect selectedSegment]];
+			return ma;
+		}
 	}
 	return NULL;
 }
@@ -103,9 +115,10 @@
 -(void) reset {
 	[keyInput clear];
 	[radioButtons setState: 1 atRow: 0 column: 0];
-    [mouseDirSelect setSelectedSegment: 0];
-    [mouseBtnSelect setSelectedSegment: 0];
-    [scrollDirSelect setSelectedSegment: 0];
+	[mouseAbsoluteDirSelect setSelectedSegment: 0];
+	[mouseDirSelect setSelectedSegment: 0];
+	[mouseBtnSelect setSelectedSegment: 0];
+	[scrollDirSelect setSelectedSegment: 0];
 	[self refreshConfigsPreservingSelection: NO];
 }
 
@@ -113,9 +126,10 @@
 	[radioButtons setEnabled: enabled];
 	[keyInput setEnabled: enabled];
 	[configPopup setEnabled: enabled];
-    [mouseDirSelect setEnabled: enabled];
-    [mouseBtnSelect setEnabled: enabled];
-    [scrollDirSelect setEnabled: enabled];
+	[mouseAbsoluteDirSelect setEnabled: enabled];
+	[mouseDirSelect setEnabled: enabled];
+	[mouseBtnSelect setEnabled: enabled];
+	[scrollDirSelect setEnabled: enabled];
 }
 -(BOOL) enabled {
 	return [radioButtons isEnabled];
@@ -145,32 +159,37 @@
 		// already reset
 	} else if([target isKindOfClass: [TargetKeyboard class]]) {
 		[radioButtons setState:1 atRow: 1 column: 0];
+        [keyInput setMods: [(TargetKeyboard*)target mods]];
 		[keyInput setVk: [(TargetKeyboard*)target vk]];
 	} else if([target isKindOfClass: [TargetConfig class]]) {
 		[radioButtons setState:1 atRow: 2 column: 0];
 		[configPopup selectItemAtIndex: [[configsController configs] indexOfObject: [(TargetConfig*)target config]]];
-    }
-    else if ([target isKindOfClass: [TargetMouseMove class]]) {
-        [radioButtons setState:1 atRow: 3 column: 0];
-        [mouseDirSelect setSelectedSegment: [(TargetMouseMove *)target dir]];
 	}
-    else if ([target isKindOfClass: [TargetMouseBtn class]]) {
-        [radioButtons setState: 1 atRow: 4 column: 0];
-        if ([(TargetMouseBtn *)target which] == kCGMouseButtonLeft)
-            [mouseBtnSelect setSelectedSegment: 0];
-        else
-            [mouseBtnSelect setSelectedSegment: 1];
-    }
-    else if ([target isKindOfClass: [TargetMouseScroll class]]) {
-        [radioButtons setState: 1 atRow: 5 column: 0];
-        if ([(TargetMouseScroll *)target howMuch] < 0)
-            [scrollDirSelect setSelectedSegment: 0];
-        else
-            [scrollDirSelect setSelectedSegment: 1];
-    }
-    else if ([target isKindOfClass: [TargetToggleMouseScope class]]) {
-        [radioButtons setState: 1 atRow: 6 column: 0];
-    } else {
+	else if ([target isKindOfClass: [TargetMouseMove class]]) {
+		[radioButtons setState:1 atRow: 3 column: 0];
+		[mouseDirSelect setSelectedSegment: [(TargetMouseMove *)target dir]];
+	}
+	else if ([target isKindOfClass: [TargetMouseBtn class]]) {
+		[radioButtons setState: 1 atRow: 4 column: 0];
+		if ([(TargetMouseBtn *)target which] == kCGMouseButtonLeft)
+			[mouseBtnSelect setSelectedSegment: 0];
+		else
+			[mouseBtnSelect setSelectedSegment: 1];
+	}
+	else if ([target isKindOfClass: [TargetMouseScroll class]]) {
+		[radioButtons setState: 1 atRow: 5 column: 0];
+		if ([(TargetMouseScroll *)target howMuch] < 0)
+			[scrollDirSelect setSelectedSegment: 0];
+		else
+			[scrollDirSelect setSelectedSegment: 1];
+	}
+	else if ([target isKindOfClass: [TargetToggleMouseScope class]]) {
+		[radioButtons setState: 1 atRow: 6 column: 0];
+	}
+	else if ([target isKindOfClass: [TargetMouseAbsolute class]]) {
+		[radioButtons setState:1 atRow: 7 column: 0];
+		[mouseAbsoluteDirSelect setSelectedSegment: [(TargetMouseAbsolute *)target dir]];
+	} else {
 		[NSException raise:@"Unknown target subclass" format:@"Unknown target subclass"];
 	}
 }
@@ -180,7 +199,7 @@
 }
 
 -(void) refreshConfigsPreservingSelection: (BOOL) preserve  {
-	int initialIndex = [configPopup indexOfSelectedItem];
+	int initialIndex = (int)[configPopup indexOfSelectedItem];
 	
 	NSArray* configs = [configsController configs];
 	[configPopup removeAllItems];
@@ -189,7 +208,7 @@
 	}
 	if(preserve)
 		[configPopup selectItemAtIndex:initialIndex];
-		
+
 }
 
 @end

@@ -8,6 +8,8 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class TargetScript;
+
 @interface Target : NSObject {
 	BOOL running;
     BOOL isContinuous;
