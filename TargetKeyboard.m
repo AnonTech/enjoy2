@@ -67,6 +67,7 @@ const NSEventModifierFlags flags[FLAGNUM]={NSEventModifierFlagCommand,NSEventMod
             CGEventRef modUp = CGEventCreateKeyboardEvent(NULL, mod[i], false);
             CGEventPost(kCGHIDEventTap, modUp);
             CFRelease(modUp);
+	    usleep(500);
         }
     }
 }
