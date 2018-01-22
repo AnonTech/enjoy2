@@ -7,8 +7,6 @@
 
 @implementation TargetKeyboard
 
-static int cmod=0;
-
 @synthesize vk, descr, mods;
 
 const int FLAGNUM=5;
@@ -38,35 +36,23 @@ const NSEventModifierFlags flags[FLAGNUM]={NSEventModifierFlagCommand,NSEventMod
 	return target;
 }
 
-+(int) cmod{
-    return cmod;
-}
-+(void) setCmod: (int) newmod{
-    cmod=newmod;
-}
-
 -(void) trigger: (JoystickController *)jc {
     for(int i=0;i<FLAGNUM;i++){
         if(mods & flags[i]){
             //NSLog(@"Creating key %hu %hu",mod[i], vk);
             CGEventRef modDown = CGEventCreateKeyboardEvent(NULL, mod[i], true);
+	    CGEventSetFlags(modDown, ([NSEvent modifierFlags] | flags[i]));
             CGEventPost(kCGHIDEventTap, modDown);
             CFRelease(modDown);
+	    usleep(500);
         }
     }
-    int tempcmod=[TargetKeyboard cmod];
     
-	CGEventRef keyDown = CGEventCreateKeyboardEvent(NULL, vk, true);
-    CGEventSetFlags(keyDown, (mods | tempcmod));
-	CGEventPost(kCGHIDEventTap, keyDown);
+    CGEventRef keyDown = CGEventCreateKeyboardEvent(NULL, vk, true);
+    CGEventSetFlags(keyDown, (mods | [NSEvent modifierFlags]));
+    CGEventPost(kCGHIDEventTap, keyDown);
     CFRelease(keyDown);
-    
-    if(vk==0x3f ){tempcmod|=NSEventModifierFlagFunction;}
-    if((vk==0x37 || vk==0x36)) {tempcmod|=NSEventModifierFlagCommand;}
-    if((vk==0x38 || vk==0x3c)) {tempcmod|=NSEventModifierFlagShift;}
-    if((vk==0x3a || vk==0x3d)) {tempcmod|=NSEventModifierFlagOption;}
-    if((vk==0x3b || vk==0x3c)) {tempcmod|=NSEventModifierFlagControl;}
-    [TargetKeyboard setCmod:tempcmod];
+    usleep(2000);
 }
 
 -(void) untrigger: (JoystickController *)jc {
@@ -74,6 +60,8 @@ const NSEventModifierFlags flags[FLAGNUM]={NSEventModifierFlagCommand,NSEventMod
 	CGEventPost(kCGHIDEventTap, keyUp);
     //CGEventSetFlags(keyUp, mods);
 	CFRelease(keyUp);
+	usleep(2000);
+	
     for(int i=0;i<FLAGNUM;i++){
         if(mods & flags[i]){
             CGEventRef modUp = CGEventCreateKeyboardEvent(NULL, mod[i], false);
@@ -81,13 +69,6 @@ const NSEventModifierFlags flags[FLAGNUM]={NSEventModifierFlagCommand,NSEventMod
             CFRelease(modUp);
         }
     }
-    int tempcmod=[TargetKeyboard cmod];
-    if(vk==0x3f && (tempcmod&NSEventModifierFlagFunction)){tempcmod^=NSEventModifierFlagFunction;}
-    if((vk==0x37 || vk==0x36) && (tempcmod&NSEventModifierFlagCommand)) {tempcmod^=NSEventModifierFlagCommand;}
-    if((vk==0x38 || vk==0x3c) && (tempcmod&NSEventModifierFlagShift)) {tempcmod^=NSEventModifierFlagShift;}
-    if((vk==0x3a || vk==0x3d) && (tempcmod&NSEventModifierFlagOption)) {tempcmod^=NSEventModifierFlagOption;}
-    if((vk==0x3b || vk==0x3c) && (tempcmod&NSEventModifierFlagControl)) {tempcmod^=NSEventModifierFlagControl;}
-    [TargetKeyboard setCmod:tempcmod];
 }
 
 
