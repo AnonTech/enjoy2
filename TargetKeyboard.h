@@ -21,7 +21,5 @@
 
 
 +(TargetKeyboard*) unstringifyImpl: (NSArray*) comps;
-+(int) cmod;
-+(void) setCmod: (int) newmod;
 
 @end
