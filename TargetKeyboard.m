@@ -37,39 +37,45 @@ const NSEventModifierFlags flags[FLAGNUM]={NSEventModifierFlagCommand,NSEventMod
 }
 
 -(void) trigger: (JoystickController *)jc {
+    CGEventSourceRef src = CGEventSourceCreate(kCGEventSourceStateHIDSystemState);
+
     for(int i=0;i<FLAGNUM;i++){
         if(mods & flags[i]){
             //NSLog(@"Creating key %hu %hu",mod[i], vk);
-            CGEventRef modDown = CGEventCreateKeyboardEvent(NULL, mod[i], true);
-	    CGEventSetFlags(modDown, ([NSEvent modifierFlags] | flags[i]));
+            CGEventRef modDown = CGEventCreateKeyboardEvent(src, mod[i], true);
+            CGEventSetFlags(modDown, ([NSEvent modifierFlags] | flags[i]));
             CGEventPost(kCGHIDEventTap, modDown);
             CFRelease(modDown);
 	    usleep(500);
         }
     }
     
-    CGEventRef keyDown = CGEventCreateKeyboardEvent(NULL, vk, true);
+    CGEventRef keyDown = CGEventCreateKeyboardEvent(src, vk, true);
     CGEventSetFlags(keyDown, (mods | [NSEvent modifierFlags]));
     CGEventPost(kCGHIDEventTap, keyDown);
     CFRelease(keyDown);
-    usleep(2000);
+    CFRelease(src);
 }
 
 -(void) untrigger: (JoystickController *)jc {
-	CGEventRef keyUp = CGEventCreateKeyboardEvent(NULL, vk, false);
+    usleep(100000);
+    CGEventSourceRef src = CGEventSourceCreate(kCGEventSourceStateHIDSystemState);
+    
+	CGEventRef keyUp = CGEventCreateKeyboardEvent(src, vk, false);
 	CGEventPost(kCGHIDEventTap, keyUp);
-    //CGEventSetFlags(keyUp, mods);
+    CGEventSetFlags(keyUp, [NSEvent modifierFlags] | mods);
 	CFRelease(keyUp);
-	usleep(2000);
+	usleep(50000);
 	
     for(int i=0;i<FLAGNUM;i++){
         if(mods & flags[i]){
-            CGEventRef modUp = CGEventCreateKeyboardEvent(NULL, mod[i], false);
+            CGEventRef modUp = CGEventCreateKeyboardEvent(src, mod[i], false);
             CGEventPost(kCGHIDEventTap, modUp);
             CFRelease(modUp);
-	    usleep(500);
+	    usleep(5000);
         }
     }
+    CFRelease(src);
 }
 
 

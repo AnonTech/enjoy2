@@ -16,13 +16,11 @@
 +(TargetScript*) unstringifyImpl: (NSArray*) comps {
     NSParameterAssert([comps count] == 2);
     TargetScript* target = [[TargetScript alloc] init];
-    NSLog(@"unstringifying TS: %@",[comps objectAtIndex:1]);
     [target setScriptPath: (NSString*)[comps objectAtIndex:1]];
     return target;
 }
 
 -(void) trigger: (JoystickController *)jc {
-    NSLog(@"Running script %@",scriptPath);
     [self runScript];
 }
 

@@ -39,7 +39,6 @@
 -(IBAction)scriptFieldChanged:(id)sender {
     [radioButtons setState: 1 atRow: 8 column: 0];
     [[[NSApplication sharedApplication] mainWindow] makeFirstResponder: sender];
-    NSLog(@"scriptFeldChanged");
     [self commit];
 }
 
@@ -106,7 +105,6 @@
             // Script
             TargetScript *tscr = [[TargetScript alloc] init];
             [tscr setScriptPath: (NSString*)[scriptPathText stringValue]];
-            NSLog(@"Set scrp to %@", [scriptPathText stringValue]);
             return tscr;
         }
 	}
