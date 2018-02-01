@@ -39,6 +39,7 @@
 -(IBAction)scriptFieldChanged:(id)sender {
     [radioButtons setState: 1 atRow: 8 column: 0];
     [[[NSApplication sharedApplication] mainWindow] makeFirstResponder: sender];
+    NSLog(@"scriptFeldChanged");
     [self commit];
 }
 
@@ -102,9 +103,10 @@
             return ma;
         }
         case 8: {
-            // mouse absolute X/Y
+            // Script
             TargetScript *tscr = [[TargetScript alloc] init];
             [tscr setScriptPath: (NSString*)[scriptPathText stringValue]];
+            NSLog(@"Set scrp to %@", [scriptPathText stringValue]);
             return tscr;
         }
 	}
@@ -131,6 +133,7 @@
 	[mouseDirSelect setSelectedSegment: 0];
 	[mouseBtnSelect setSelectedSegment: 0];
 	[scrollDirSelect setSelectedSegment: 0];
+    [scriptPathText setStringValue:@""];
 	[self refreshConfigsPreservingSelection: NO];
 }
 
@@ -142,6 +145,7 @@
 	[mouseDirSelect setEnabled: enabled];
 	[mouseBtnSelect setEnabled: enabled];
 	[scrollDirSelect setEnabled: enabled];
+    [scriptPathText setEnabled:enabled];
 }
 -(BOOL) enabled {
 	return [radioButtons isEnabled];
@@ -201,7 +205,7 @@
     else if ([target isKindOfClass: [TargetMouseAbsolute class]]) {
         [radioButtons setState:1 atRow: 7 column: 0];
         [mouseAbsoluteDirSelect setSelectedSegment: [(TargetMouseAbsolute *)target dir]];
-    }else if ([target isKindOfClass: [TargetMouseAbsolute class]]) {
+    }else if ([target isKindOfClass: [TargetScript class]]) {
         [radioButtons setState:1 atRow: 8 column: 0];
         [scriptPathText setStringValue: [(TargetScript *)target scriptPath]];
         
