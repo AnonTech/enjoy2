@@ -24,7 +24,8 @@
     IBOutlet NSSegmentedControl* mouseDirSelect;
     IBOutlet NSSegmentedControl* mouseBtnSelect;
     IBOutlet NSSegmentedControl* scrollDirSelect;
-	IBOutlet NSTextField* title;
+    IBOutlet NSTextField *scriptPathText;
+    IBOutlet NSTextField* title;
 	IBOutlet NSPopUpButton* configPopup;
 	IBOutlet ConfigsController* configsController;
 	IBOutlet JoystickController* joystickController;
@@ -43,6 +44,7 @@
 -(IBAction)mdirChanged:(id)sender;
 -(IBAction)mbtnChanged:(id)sender;
 -(IBAction)sdirChanged:(id)sender;
+-(IBAction)scriptFieldChanged:(id)sender;
 -(void) focusKey;
 
 @property(readwrite) BOOL enabled;

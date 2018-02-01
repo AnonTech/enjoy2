@@ -5,15 +5,14 @@
 //  Created by Aaron Schain on 11/18/17.
 //
 //
-
-#import "Target.h"
+#import <Foundation/Foundation.h>
 @class Target;
 
 @interface TargetScript : Target {
-    NSString* scriptname;
+    NSString* scriptPath;
 }
 
-@property(readwrite) NSString* scriptname;
+@property(readwrite,copy) NSString* scriptPath;
 
 +(TargetScript*) unstringifyImpl: (NSArray*) comps;
 

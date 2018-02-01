@@ -36,6 +36,12 @@
 	[self commit];
 }
 
+-(IBAction)scriptFieldChanged:(id)sender {
+    [radioButtons setState: 1 atRow: 8 column: 0];
+    [[[NSApplication sharedApplication] mainWindow] makeFirstResponder: sender];
+    [self commit];
+}
+
 
 -(Target*) state {
 	switch([radioButtons selectedRow]) {
@@ -89,12 +95,18 @@
 			TargetToggleMouseScope *tms = [[TargetToggleMouseScope alloc] init];
 			return tms;
 		}
-		case 7: {
-			// mouse absolute X/Y
-			TargetMouseAbsolute *ma = [[TargetMouseAbsolute alloc] init];
-			[ma setDir: (int)[mouseAbsoluteDirSelect selectedSegment]];
-			return ma;
-		}
+        case 7: {
+            // mouse absolute X/Y
+            TargetMouseAbsolute *ma = [[TargetMouseAbsolute alloc] init];
+            [ma setDir: (int)[mouseAbsoluteDirSelect selectedSegment]];
+            return ma;
+        }
+        case 8: {
+            // mouse absolute X/Y
+            TargetScript *tscr = [[TargetScript alloc] init];
+            [tscr setScriptPath: (NSString*)[scriptPathText stringValue]];
+            return tscr;
+        }
 	}
 	return NULL;
 }
@@ -186,10 +198,14 @@
 	else if ([target isKindOfClass: [TargetToggleMouseScope class]]) {
 		[radioButtons setState: 1 atRow: 6 column: 0];
 	}
-	else if ([target isKindOfClass: [TargetMouseAbsolute class]]) {
-		[radioButtons setState:1 atRow: 7 column: 0];
-		[mouseAbsoluteDirSelect setSelectedSegment: [(TargetMouseAbsolute *)target dir]];
-	} else {
+    else if ([target isKindOfClass: [TargetMouseAbsolute class]]) {
+        [radioButtons setState:1 atRow: 7 column: 0];
+        [mouseAbsoluteDirSelect setSelectedSegment: [(TargetMouseAbsolute *)target dir]];
+    }else if ([target isKindOfClass: [TargetMouseAbsolute class]]) {
+        [radioButtons setState:1 atRow: 8 column: 0];
+        [scriptPathText setStringValue: [(TargetScript *)target scriptPath]];
+        
+    }else {
 		[NSException raise:@"Unknown target subclass" format:@"Unknown target subclass"];
 	}
 }

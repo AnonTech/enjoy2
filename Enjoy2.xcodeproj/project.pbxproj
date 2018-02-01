@@ -86,8 +86,8 @@
 		8BEFAD9F15C476DC00823AEC /* TargetToggleMouseScope.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetToggleMouseScope.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Enjoy2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Enjoy2.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		93B189C61FC1011200D589C9 /* TargetScript.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TargetScript.h; sourceTree = "<group>"; };
-		93B189C71FC1014500D589C9 /* TargetScript.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TargetScript.m; sourceTree = "<group>"; };
+		93B189C61FC1011200D589C9 /* TargetScript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetScript.h; sourceTree = "<group>"; };
+		93B189C71FC1014500D589C9 /* TargetScript.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetScript.m; sourceTree = "<group>"; };
 		D549CA4B0FBB441B00BC8203 /* Credits.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 		D5617A080FAEAF8300928B3A /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
 		D5617A340FAEB74000928B3A /* ConfigsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigsController.h; sourceTree = "<group>"; };

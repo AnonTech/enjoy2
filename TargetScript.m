@@ -4,38 +4,35 @@
 //
 //  Created by Aaron Schain on 11/18/17.
 //
-
-#import <Foundation/Foundation.h>
 #import "TargetScript.h"
-
 @implementation TargetScript
 
-@synthesize scriptname;
+@synthesize scriptPath;
 
 -(NSString*) stringify {
-    return [[NSString alloc] initWithFormat: @"scpt~%@", scriptname];
+    return [[NSString alloc] initWithFormat: @"scpt~%@", scriptPath];
 }
 
 +(TargetScript*) unstringifyImpl: (NSArray*) comps {
     NSParameterAssert([comps count] == 2);
     TargetScript* target = [[TargetScript alloc] init];
-    [target setScriptname: [comps objectAtIndex:1]];
+    [target setScriptPath: (NSString*)[comps objectAtIndex:1]];
     return target;
 }
 
 -(void) trigger: (JoystickController *)jc {
-    [self runScript: scriptname];
+    [self runScript];
 }
 
 -(void) untrigger: (JoystickController *)jc {
 }
 
--(void) runScript:(NSString*)scriptName
+-(void) runScript
 {
     NSTask *task;
     task = [[NSTask alloc] init];
     [task setLaunchPath: @"/bin/sh"];
-    NSArray *arguments= [NSArray arrayWithObjects:scriptname, nil];
+    NSArray *arguments= [NSArray arrayWithObjects:scriptPath, nil];
     [task setArguments: arguments];
     
     NSPipe *pipe;
