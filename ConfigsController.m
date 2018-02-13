@@ -216,7 +216,7 @@
         [mapping loadSkelFromJSON:json_data];
         [new_mappings addObject:mapping];
     }
-    
+    configs = new_mappings;
     int ix = 0;
     for (NSURL *url in mapping_urls) {
         Config *mapping = [new_mappings objectAtIndex:ix];

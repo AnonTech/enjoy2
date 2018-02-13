@@ -61,7 +61,7 @@
 			TargetConfig* c = [[TargetConfig alloc] init];
 			[c setConfig: [[configsController configs] objectAtIndex: [configPopup indexOfSelectedItem]]];
             [c setOnpress:(int)[configOnpress selectedSegment]];
-            [c setMyJsa:currentJsaction];
+            [c setMyJsaKey:[currentJsaction stringify]];
 			return c;
 		}
 		case 3: {

@@ -10,7 +10,7 @@
 
 @implementation TargetConfig
 
-@synthesize config, onpress, myJsa;
+@synthesize config, onpress, myJsaKey;
 
 -(id) init {
     if(self=[super init]) {
@@ -27,13 +27,15 @@
 	NSParameterAssert([comps count] > 1);
 	NSString* name = [comps objectAtIndex: 1];
 	TargetConfig* target = [[TargetConfig alloc] init];
-	for(int i=0; i<[configs count]; i++)
+    for(int i=0; i<[configs count]; i++){
+        //NSLog(@"Config %@ equal to %@",[[configs objectAtIndex:i] name],name);
 		if([[[configs objectAtIndex:i] name] isEqualToString:name]) {
 			[target setConfig: [configs objectAtIndex:i]];
             if([comps count]>2)[target setOnpress: (int)[[comps objectAtIndex:2] integerValue]];
             else [target setOnpress: 0];
 			return target;
-		}
+        }
+    }
 	NSLog(@"Warning: couldn't find matching config to restore from: %@",name);
 	return NULL;
 }
@@ -42,7 +44,7 @@
     //NSLog(@"TC trigg op:%d config:%@",onpress,[config name]);
     if(onpress==0){
         [configsController activateConfig:config forApplication: NULL];
-        [[config getTargetForAction:myJsa] setRunning:YES];
+        [[config getTargetForActionFromKey:myJsaKey] setRunning:YES];
     }
 }
 
@@ -50,7 +52,7 @@
     //NSLog(@"TC untrg op:%d config:%@",onpress,[config name]);
     if(onpress==1){
         [configsController activateConfig:config forApplication: NULL];
-        [[config getTargetForAction:myJsa] setRunning:NO];
+        [[config getTargetForActionFromKey:myJsaKey] setRunning:NO];
     }
 }
 

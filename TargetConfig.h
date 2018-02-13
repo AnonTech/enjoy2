@@ -14,12 +14,12 @@
     ConfigsController* configsController;
     Config *config;
     int onpress;
-    id myJsa;
+    NSString* myJsaKey;
 }
 
 @property(readwrite, retain) Config* config;
 @property(readwrite) int onpress;
-@property(readwrite,retain) id myJsa;
+@property(readwrite,retain) NSString* myJsaKey;
 
 +(TargetConfig*) unstringifyImpl: (NSArray*) comps withConfigList: (NSArray*) configs;
 
