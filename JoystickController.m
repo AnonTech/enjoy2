@@ -216,11 +216,11 @@ void remove_callback(void* inContext, IOReturn inResult, void* inSender, IOHIDDe
 
 - (int)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item {
 	if(item == nil)
-		return [joysticks count];
+		return (int)[joysticks count];
 	if([item isKindOfClass: [Joystick class]])
-		return [[item children] count];
+		return (int)[[item children] count];
 	if([item isKindOfClass: [JSAction class]] && [item subActions] != NULL)
-		return [[item subActions] count];
+		return (int)[[item subActions] count];
 	return 0;
 }
 
