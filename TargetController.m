@@ -60,6 +60,8 @@
 		{
 			TargetConfig* c = [[TargetConfig alloc] init];
 			[c setConfig: [[configsController configs] objectAtIndex: [configPopup indexOfSelectedItem]]];
+            [c setOnpress:(int)[configOnpress selectedSegment]];
+            [c setMyJsa:currentJsaction];
 			return c;
 		}
 		case 3: {
@@ -115,6 +117,11 @@
 	[radioButtons setState: 1 atRow: 2 column: 0];
 	[self commit];
 }
+-(IBAction)configOpChanged:(id)sender{
+    [radioButtons setState: 1 atRow: 2 column: 0];
+    [[[NSApplication sharedApplication] mainWindow] makeFirstResponder: sender];
+    [self commit];
+}
 
 -(void) commit {
 	id action = [joystickController selectedAction];
@@ -131,6 +138,7 @@
 	[mouseDirSelect setSelectedSegment: 0];
 	[mouseBtnSelect setSelectedSegment: 0];
 	[scrollDirSelect setSelectedSegment: 0];
+    [configOnpress setSelectedSegment: 0];
     [scriptPathText setStringValue:@""];
 	[self refreshConfigsPreservingSelection: NO];
 }
@@ -143,6 +151,7 @@
 	[mouseDirSelect setEnabled: enabled];
 	[mouseBtnSelect setEnabled: enabled];
 	[scrollDirSelect setEnabled: enabled];
+    [configOnpress setEnabled: enabled];
     [scriptPathText setEnabled:enabled];
 }
 -(BOOL) enabled {
@@ -178,6 +187,7 @@
 	} else if([target isKindOfClass: [TargetConfig class]]) {
 		[radioButtons setState:1 atRow: 2 column: 0];
 		[configPopup selectItemAtIndex: [[configsController configs] indexOfObject: [(TargetConfig*)target config]]];
+        [configOnpress setSelectedSegment: [(TargetConfig *)target onpress]];
 	}
 	else if ([target isKindOfClass: [TargetMouseMove class]]) {
 		[radioButtons setState:1 atRow: 3 column: 0];

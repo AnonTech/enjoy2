@@ -24,6 +24,7 @@
     IBOutlet NSSegmentedControl* mouseDirSelect;
     IBOutlet NSSegmentedControl* mouseBtnSelect;
     IBOutlet NSSegmentedControl* scrollDirSelect;
+    IBOutlet NSSegmentedControl* configOnpress;
     IBOutlet NSTextField *scriptPathText;
     IBOutlet NSTextField* title;
 	IBOutlet NSPopUpButton* configPopup;
@@ -44,6 +45,7 @@
 -(IBAction)mdirChanged:(id)sender;
 -(IBAction)mbtnChanged:(id)sender;
 -(IBAction)sdirChanged:(id)sender;
+-(IBAction)configOpChanged:(id)sender;
 -(IBAction)scriptFieldChanged:(id)sender;
 -(void) focusKey;
 

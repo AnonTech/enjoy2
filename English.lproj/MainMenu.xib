@@ -353,18 +353,6 @@
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
-                                    <popUpButton verticalHuggingPriority="750" id="700">
-                                        <rect key="frame" x="226" y="347" width="182" height="26"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" enabled="NO" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="701">
-                                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="menu"/>
-                                            <menu key="menu" title="OtherViews" id="702"/>
-                                        </popUpButtonCell>
-                                        <connections>
-                                            <action selector="configChosen:" target="686" id="714"/>
-                                        </connections>
-                                    </popUpButton>
                                     <scrollView focusRingType="exterior" borderType="groove" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" id="680">
                                         <rect key="frame" x="229" y="404" width="176" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -518,6 +506,32 @@
                                             <action selector="scriptFieldChanged:" target="686" id="qk0-pV-qhf"/>
                                         </connections>
                                     </textField>
+                                    <segmentedControl verticalHuggingPriority="750" misplaced="YES" id="lk5-cQ-QaW">
+                                        <rect key="frame" x="227" y="340" width="179" height="24"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="jnK-8V-Frl">
+                                            <font key="font" metaFont="system"/>
+                                            <segments>
+                                                <segment label="On Press" width="86" selected="YES"/>
+                                                <segment label="On Release" width="86" tag="1"/>
+                                            </segments>
+                                        </segmentedCell>
+                                        <connections>
+                                            <action selector="configOpChanged:" target="686" id="2xa-Yh-j8Y"/>
+                                        </connections>
+                                    </segmentedControl>
+                                    <popUpButton verticalHuggingPriority="750" misplaced="YES" id="700">
+                                        <rect key="frame" x="226" y="360" width="182" height="26"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" enabled="NO" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="701">
+                                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="menu"/>
+                                            <menu key="menu" title="OtherViews" id="702"/>
+                                        </popUpButtonCell>
+                                        <connections>
+                                            <action selector="configChosen:" target="686" id="714"/>
+                                        </connections>
+                                    </popUpButton>
                                 </subviews>
                             </customView>
                         </subviews>
@@ -662,6 +676,7 @@
         </customObject>
         <customObject id="686" customClass="TargetController">
             <connections>
+                <outlet property="configOnpress" destination="lk5-cQ-QaW" id="sAZ-hm-MBA"/>
                 <outlet property="configPopup" destination="700" id="713"/>
                 <outlet property="configsController" destination="514" id="693"/>
                 <outlet property="joystickController" destination="479" id="694"/>

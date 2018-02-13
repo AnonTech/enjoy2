@@ -53,7 +53,7 @@
     [removeButton setEnabled:([configs count] > 0)];
 	[targetController load];
 	[appController configChanged];
-	[tableView selectRow: [configs indexOfObject: config] byExtendingSelection: NO];
+	[tableView selectRowIndexes: [NSIndexSet indexSetWithIndex:[configs indexOfObject: config]] byExtendingSelection: NO];
 }
 
 -(Config*) mappingWithName:(NSString *)name {
@@ -80,8 +80,8 @@
 	[configs addObject: newConfig];
 	[appController configsListChanged];
 	[tableView reloadData];
-	[tableView selectRow: ([configs count]-1) byExtendingSelection: NO];
-	[tableView editColumn: 0 row:([configs count]-1) withEvent:nil select:YES];
+	[tableView selectRowIndexes:[NSIndexSet indexSetWithIndex:([configs count]-1)] byExtendingSelection: NO];
+    [tableView editColumn: 0 row:([configs count]-1) withEvent:nil select:YES];
 }
 -(IBAction) removePressed: (id)sender {
 	// save changes first

@@ -11,11 +11,16 @@
 @class Target;
 
 @interface TargetConfig : Target {
+    ConfigsController* configsController;
     Config *config;
-    Config *origConfig;
+    int onpress;
+    id myJsa;
 }
 
 @property(readwrite, retain) Config* config;
+@property(readwrite) int onpress;
+@property(readwrite,retain) id myJsa;
+
 +(TargetConfig*) unstringifyImpl: (NSArray*) comps withConfigList: (NSArray*) configs;
 
 @end
