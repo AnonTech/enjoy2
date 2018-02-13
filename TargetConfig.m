@@ -39,7 +39,7 @@
 }
 
 -(void) trigger: (JoystickController *)jc {
-    NSLog(@"TC trigg op:%d config:%@",onpress,[config name]);
+    //NSLog(@"TC trigg op:%d config:%@",onpress,[config name]);
     if(onpress==0){
         [configsController activateConfig:config forApplication: NULL];
         [[config getTargetForAction:myJsa] setRunning:YES];
@@ -47,7 +47,7 @@
 }
 
 -(void) untrigger: (JoystickController *)jc {
-    NSLog(@"TC untrg op:%d config:%@",onpress,[config name]);
+    //NSLog(@"TC untrg op:%d config:%@",onpress,[config name]);
     if(onpress==1){
         [configsController activateConfig:config forApplication: NULL];
         [[config getTargetForAction:myJsa] setRunning:NO];
