@@ -36,8 +36,8 @@
 }
 
 -(void) update: (JoystickController *)jc {
-    //printf("Dir %d inputValue %f\n", [self dir], [self inputValue]);
-    if (fabs([self inputValue]) < 0.01)
+    //NSLog(@"Dir %d inputValue %f\n", [self dir], [self inputValue]);
+    if (fabs([self inputValue]) < 0.13)
         return; // dead zone
     
     NSRect screenRect = [[NSScreen mainScreen] frame];
