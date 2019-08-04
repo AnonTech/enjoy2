@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <deployment version="1050" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
+        <deployment version="1060" identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -273,12 +273,12 @@
             <point key="canvasLocation" x="106" y="507"/>
         </menu>
         <customObject id="420" customClass="NSFontManager"/>
-        <window title="Enjoy2" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" animationBehavior="default" id="450">
+        <window title="Enjoy2" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="450">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="355" y="463" width="770" height="541"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1366" height="745"/>
-            <view key="contentView" misplaced="YES" id="453">
+            <view key="contentView" id="453">
                 <rect key="frame" x="0.0" y="0.0" width="770" height="541"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
@@ -304,7 +304,7 @@
                                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                                     <tableColumns>
-                                                        <tableColumn identifier="" editable="NO" width="239" minWidth="16" maxWidth="1000" id="639">
+                                                        <tableColumn editable="NO" width="239" minWidth="16" maxWidth="1000" id="639">
                                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                                                 <font key="font" metaFont="smallSystem"/>
                                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -356,14 +356,15 @@
                                     <scrollView focusRingType="exterior" borderType="groove" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" id="680">
                                         <rect key="frame" x="229" y="404" width="176" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <clipView key="contentView" id="FwE-SW-d0a">
+                                        <clipView key="contentView" drawsBackground="NO" id="FwE-SW-d0a">
                                             <rect key="frame" x="2" y="2" width="172" height="20"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <textView editable="NO" selectable="NO" importsGraphics="NO" richText="NO" verticallyResizable="YES" fieldEditor="YES" spellingCorrection="YES" id="683" customClass="KeyInputTextView">
                                                     <rect key="frame" x="0.0" y="0.0" width="172" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     <size key="minSize" width="172" height="20"/>
                                                     <size key="maxSize" width="463" height="10000000"/>
                                                     <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -373,7 +374,6 @@
                                                     </connections>
                                                 </textView>
                                             </subviews>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </clipView>
                                         <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="682">
                                             <rect key="frame" x="-100" y="-100" width="87" height="18"/>
@@ -494,19 +494,19 @@
                                             <action selector="radioChanged:" target="686" id="731"/>
                                         </connections>
                                     </matrix>
-                                    <textField verticalHuggingPriority="750" misplaced="YES" id="oeF-LR-CO6">
+                                    <textField verticalHuggingPriority="750" id="oeF-LR-CO6">
                                         <rect key="frame" x="228" y="46" width="176" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" state="on" borderStyle="bezel" placeholderString="Script Path" drawsBackground="YES" usesSingleLineMode="YES" id="EcQ-OX-mJ7">
                                             <font key="font" metaFont="system"/>
-                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                         <connections>
                                             <action selector="scriptFieldChanged:" target="686" id="qk0-pV-qhf"/>
                                         </connections>
                                     </textField>
-                                    <segmentedControl verticalHuggingPriority="750" misplaced="YES" id="lk5-cQ-QaW">
+                                    <segmentedControl verticalHuggingPriority="750" id="lk5-cQ-QaW">
                                         <rect key="frame" x="227" y="340" width="179" height="24"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="jnK-8V-Frl">
@@ -520,7 +520,7 @@
                                             <action selector="configOpChanged:" target="686" id="2xa-Yh-j8Y"/>
                                         </connections>
                                     </segmentedControl>
-                                    <popUpButton verticalHuggingPriority="750" misplaced="YES" id="700">
+                                    <popUpButton verticalHuggingPriority="750" id="700">
                                         <rect key="frame" x="226" y="360" width="182" height="26"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <popUpButtonCell key="cell" type="push" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" enabled="NO" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" id="701">
@@ -597,7 +597,7 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <clipView key="contentView" id="LkI-FA-fOn">
                         <rect key="frame" x="1" y="1" width="320" height="418"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" alternatingRowBackgroundColors="YES" columnReordering="NO" columnResizing="NO" multipleSelection="NO" emptySelection="NO" autosaveColumns="NO" typeSelect="NO" id="459">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="418"/>
@@ -606,7 +606,7 @@
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                 <tableColumns>
-                                    <tableColumn identifier="" width="317" minWidth="40" maxWidth="1000" id="461">
+                                    <tableColumn width="317" minWidth="40" maxWidth="1000" id="461">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
