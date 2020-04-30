@@ -24,6 +24,9 @@
 -(Target*) getTargetForAction: (id) jsa {
 	return [entries objectForKey: [jsa stringify]];
 }
+-(Target*) getTargetForActionFromKey: (NSString*) key {
+    return [entries objectForKey: key];
+}
 
 -(void) saveJSONTo:(NSURL *)filename {
     NSMutableDictionary *mapping_dict = [[NSMutableDictionary alloc] init];
@@ -61,7 +64,9 @@
     NSDictionary *entries_d = [jd objectForKey:@"entries"];
     for(id key in entries_d) {
         NSString *value = [entries_d objectForKey:key];
-        [entries setObject: [Target unstringify:value withConfigList:configs] forKey:key];
+        Target* target=[Target unstringify:value withConfigList:configs];
+        if(target && [target isKindOfClass: [TargetConfig class]]) [(TargetConfig*)target setMyJsaKey:key];
+        [entries setObject: target forKey:key];
     }
     return self;
 }

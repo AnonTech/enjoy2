@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
+		73C777281C2162B700C86A86 /* TargetMouseAbsolute.m in Sources */ = {isa = PBXBuildFile; fileRef = 73C777271C2162B700C86A86 /* TargetMouseAbsolute.m */; };
 		8B0C55251709F78F0086F30B /* TranslationWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B0C55231709F78F0086F30B /* TranslationWindow.xib */; };
 		8B0C5528170A07900086F30B /* dualshock.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B0C5527170A07900086F30B /* dualshock.png */; };
 		8B4B9DE31A2BFD2A0074ADC6 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B4B9DE21A2BFD2A0074ADC6 /* Sparkle.framework */; };
@@ -22,6 +23,7 @@
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+		93B189C81FC1014500D589C9 /* TargetScript.m in Sources */ = {isa = PBXBuildFile; fileRef = 93B189C71FC1014500D589C9 /* TargetScript.m */; };
 		D549CA4C0FBB441B00BC8203 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = D549CA4B0FBB441B00BC8203 /* Credits.rtf */; };
 		D5617A360FAEB74000928B3A /* ConfigsController.m in Sources */ = {isa = PBXBuildFile; fileRef = D5617A350FAEB74000928B3A /* ConfigsController.m */; };
 		D5617A390FAEBA1800928B3A /* Config.m in Sources */ = {isa = PBXBuildFile; fileRef = D5617A380FAEBA1800928B3A /* Config.m */; };
@@ -65,6 +67,8 @@
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		32CA4F630368D1EE00C91783 /* Enjoy2_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Enjoy2_Prefix.pch; sourceTree = "<group>"; };
+		73C777271C2162B700C86A86 /* TargetMouseAbsolute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetMouseAbsolute.m; sourceTree = "<group>"; };
+		73C777291C2162D600C86A86 /* TargetMouseAbsolute.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TargetMouseAbsolute.h; sourceTree = "<group>"; };
 		8B0C55241709F78F0086F30B /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/TranslationWindow.xib; sourceTree = "<group>"; };
 		8B0C5527170A07900086F30B /* dualshock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dualshock.png; sourceTree = "<group>"; };
 		8B4B9DE21A2BFD2A0074ADC6 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
@@ -82,6 +86,8 @@
 		8BEFAD9F15C476DC00823AEC /* TargetToggleMouseScope.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetToggleMouseScope.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Enjoy2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Enjoy2.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		93B189C61FC1011200D589C9 /* TargetScript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TargetScript.h; sourceTree = "<group>"; };
+		93B189C71FC1014500D589C9 /* TargetScript.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TargetScript.m; sourceTree = "<group>"; };
 		D549CA4B0FBB441B00BC8203 /* Credits.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 		D5617A080FAEAF8300928B3A /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
 		D5617A340FAEB74000928B3A /* ConfigsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigsController.h; sourceTree = "<group>"; };
@@ -163,10 +169,14 @@
 				D5617FD50FAFD06000928B3A /* Target.m */,
 				D5617FD70FAFD1E600928B3A /* TargetKeyboard.h */,
 				D5617FD80FAFD1E600928B3A /* TargetKeyboard.m */,
+				93B189C61FC1011200D589C9 /* TargetScript.h */,
+				93B189C71FC1014500D589C9 /* TargetScript.m */,
 				D5617FE20FAFD7B000928B3A /* TargetController.h */,
 				D5617FE30FAFD7B000928B3A /* TargetController.m */,
 				D5617FE50FAFDB5800928B3A /* KeyInputTextView.h */,
 				D5617FE60FAFDB5800928B3A /* KeyInputTextView.m */,
+				73C777291C2162D600C86A86 /* TargetMouseAbsolute.h */,
+				73C777271C2162B700C86A86 /* TargetMouseAbsolute.m */,
 				8BD9B54115C230FE00929C5D /* TargetMouseMove.h */,
 				8BD9B54215C230FE00929C5D /* TargetMouseMove.m */,
 				8B7E476A15C314A200C588FA /* TargetMouseBtn.h */,
@@ -299,7 +309,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0600;
+				LastUpgradeCheck = 0910;
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "Enjoy2" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -345,6 +355,7 @@
 			files = (
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				D594BE860FAE6219007A85F2 /* Joystick.m in Sources */,
+				93B189C81FC1014500D589C9 /* TargetScript.m in Sources */,
 				D594BE8A0FAE64AD007A85F2 /* JSAction.m in Sources */,
 				D594BEF90FAE6FF2007A85F2 /* JoystickController.m in Sources */,
 				D594BF830FAE9661007A85F2 /* ApplicationController.m in Sources */,
@@ -356,6 +367,7 @@
 				D5617DF20FAF636C00928B3A /* SubAction.m in Sources */,
 				D5617FD60FAFD06000928B3A /* Target.m in Sources */,
 				D5617FD90FAFD1E600928B3A /* TargetKeyboard.m in Sources */,
+				73C777281C2162B700C86A86 /* TargetMouseAbsolute.m in Sources */,
 				D5617FE40FAFD7B000928B3A /* TargetController.m in Sources */,
 				D5617FE70FAFDB5800928B3A /* KeyInputTextView.m in Sources */,
 				D5F809710FB093400006A4DE /* TargetConfig.m in Sources */,
@@ -416,6 +428,7 @@
 				GCC_PREFIX_HEADER = Enjoy2_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.tunah.${PRODUCT_NAME:identifier}";
 				PRODUCT_NAME = Enjoy2;
 				SDKROOT = macosx;
 			};
@@ -437,6 +450,7 @@
 				GCC_PREFIX_HEADER = Enjoy2_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.tunah.${PRODUCT_NAME:identifier}";
 				PRODUCT_NAME = Enjoy2;
 				SDKROOT = macosx;
 			};
@@ -445,9 +459,32 @@
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
@@ -459,8 +496,30 @@
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PREBINDING = NO;

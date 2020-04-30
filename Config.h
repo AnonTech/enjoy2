@@ -19,6 +19,7 @@
 
 -(void) setTarget:(Target*)target forAction:(id)jsa;
 -(Target*) getTargetForAction: (id) jsa;
+-(Target*) getTargetForActionFromKey: (NSString*) key;
 
 -(void) saveJSONTo: (NSURL*)filename;
 // Load only the name from the JSON file (for loading 1st pass)

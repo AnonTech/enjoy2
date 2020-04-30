@@ -7,7 +7,7 @@
 
 @implementation KeyInputTextView
 
-@synthesize descr, hasKey;
+@synthesize descr, hasKey, mods;
 
 -(id) init {
 	if(self = [super init]) {
@@ -19,11 +19,26 @@
 -(void) clear {
 	[self setString: [NSString string]];
 	vk = -1;
-	hasKey = NO;
+    mods=0;
+    hasKey = NO;
 	descr = NULL;
 }
 
 -(NSString*) stringForKeyCode: (int) keycode {
+    
+    NSMutableString* modsstr=[[NSMutableString alloc] init];
+    [modsstr setString:@""];
+    if(mods & NSEventModifierFlagCommand)[modsstr appendString:@"cmd "];
+    if(mods & NSEventModifierFlagShift)[modsstr appendString:@"shift "];
+    if(mods & NSEventModifierFlagOption)[modsstr appendString:@"opt "];
+    if(mods & NSEventModifierFlagControl)[modsstr appendString:@"ctrl "];
+    if(mods & NSEventModifierFlagFunction)[modsstr appendString:@"fn "];
+    
+    return [[NSString stringWithString: modsstr] stringByAppendingString:[self stringForKeyCode2: keycode]];
+}
+
+-(NSString*) stringForKeyCode2: (int) keycode {
+    
 	switch(keycode) {
 		case 0x7a :	return @"F1";
 		case 0x78 :	return @"F2";
@@ -159,18 +174,28 @@
 	return YES;
 }
 
--(void) pressed:(int) keycode {
-	[self setVk: keycode];
+-(void) pressed:(NSEvent *)evt {
+    vk=[evt keyCode];
+    mods= [evt modifierFlags];;
+    
+    if(vk==0x3f && (mods&NSEventModifierFlagFunction)){/*Fn key*/ return;}
+    if((vk==0x37 || vk==0x36)&&(mods&NSEventModifierFlagCommand)) {/*NSLog(@"key: cmd down");*/ return;}
+    if((vk==0x38 || vk==0x3c)&&(mods&NSEventModifierFlagShift)) {/*NSLog(@"key: shift");*/ return;}
+    if((vk==0x3a || vk==0x3d)&&(mods&NSEventModifierFlagOption)) {/*NSLog(@"key: opt");*/ return;}
+    if((vk==0x3b || vk==0x3c)&&(mods&NSEventModifierFlagControl)) {/*NSLog(@"key: ctrl");*/ return;}
+    
+	[self setVk: [evt keyCode]];
 	[[self window] makeFirstResponder: nil];
 	[targetController keyChanged];
 }
 
 -(void) setVk: (int) key {
 	vk=key;
-	hasKey = YES;
-	descr = [self stringForKeyCode: key];
+    hasKey = YES;
+    descr = [self stringForKeyCode: vk];
 	[self setString: descr];
 }
+
 -(int) vk {
 	return vk;
 }
@@ -178,12 +203,13 @@
 - (void)keyDown:(NSEvent *)evt {
 	if([evt isARepeat])
 		return;
-	[self pressed: [evt keyCode]];
+	[self pressed: evt];
 }
 
 -(void) flagsChanged:(NSEvent*)evt {
-	// XXX sometimes it's key up
-	[self pressed: [evt keyCode]];
+    // XXX sometimes it's key up
+    //NSLog(@"flagchanged");
+    [self pressed: evt];
 }
 
 -(void) setEnabled: (BOOL) newEnabled {

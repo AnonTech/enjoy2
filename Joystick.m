@@ -8,13 +8,14 @@
 @implementation Joystick
 
 
-@synthesize	vendorId, productId, productName, name, index, device, children;
+@synthesize	vendorId, productId, productName, name, controller, index, device, children;
 
--(id)initWithDevice: (IOHIDDeviceRef) newDevice {
+-(id)initWithDevice: (IOHIDDeviceRef) newDevice andController: (JoystickController*) newController {
 	if(self=[super init]) {
 		children = [[NSMutableArray alloc]init];
 		
 		device = newDevice;
+		controller = newController;
 		productName = (NSString*)IOHIDDeviceGetProperty( device, CFSTR(kIOHIDProductKey) );
 		vendorId = [(NSNumber*)IOHIDDeviceGetProperty(device, CFSTR(kIOHIDVendorIDKey)) intValue];
 		productId = [(NSNumber*)IOHIDDeviceGetProperty(device, CFSTR(kIOHIDVendorIDKey)) intValue];
@@ -52,8 +53,8 @@
 		int type = IOHIDElementGetType(element);
 		int usage = IOHIDElementGetUsage(element);
 		int usagePage = IOHIDElementGetUsagePage(element);
-		int max = IOHIDElementGetPhysicalMax(element);
-		int min = IOHIDElementGetPhysicalMin(element);
+		int max = (int)IOHIDElementGetPhysicalMax(element);
+		int min = (int)IOHIDElementGetPhysicalMin(element);
         CFStringRef elName = IOHIDElementGetName(element);
 		
 //		if(usagePage != 1 || usagePage == 9) {
@@ -79,6 +80,9 @@
 				action = [[JSActionAnalog alloc] initWithIndex: axes++];
 				[(JSActionAnalog*)action setMax: (double)max];
                 [(JSActionAnalog*)action setMin: (double)min];
+            } else if(usage >= 0xc4 && usage <= 0xc5) {
+                action = [[JSActionButton alloc] initWithIndex: buttons++ andName: (NSString *)elName];
+                [(JSActionButton*)action setMax: max];
             } else {
 				continue;
             }

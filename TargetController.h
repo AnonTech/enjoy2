@@ -13,15 +13,20 @@
 @class Target;
 
 @class TargetMouseMove;
+@class TargetMouseAbsolute;
+@class TargetScript;
 
 @interface TargetController : NSObject {
 	IBOutlet KeyInputTextView* keyInput;
 	IBOutlet NSButtonCell *radioNoAction, *radioKey, *radioConfig;
 	IBOutlet NSMatrix* radioButtons;
+    IBOutlet NSSegmentedControl* mouseAbsoluteDirSelect;
     IBOutlet NSSegmentedControl* mouseDirSelect;
     IBOutlet NSSegmentedControl* mouseBtnSelect;
     IBOutlet NSSegmentedControl* scrollDirSelect;
-	IBOutlet NSTextField* title;
+    IBOutlet NSSegmentedControl* configOnpress;
+    IBOutlet NSTextField *scriptPathText;
+    IBOutlet NSTextField* title;
 	IBOutlet NSPopUpButton* configPopup;
 	IBOutlet ConfigsController* configsController;
 	IBOutlet JoystickController* joystickController;
@@ -36,9 +41,12 @@
 -(void) refreshConfigsPreservingSelection: (BOOL) preserve;
 -(IBAction)configChosen:(id)sender;
 -(IBAction)radioChanged:(id)sender;
+-(IBAction)mabsoluteDirChanged:(id)sender;
 -(IBAction)mdirChanged:(id)sender;
 -(IBAction)mbtnChanged:(id)sender;
 -(IBAction)sdirChanged:(id)sender;
+-(IBAction)configOpChanged:(id)sender;
+-(IBAction)scriptFieldChanged:(id)sender;
 -(void) focusKey;
 
 @property(readwrite) BOOL enabled;

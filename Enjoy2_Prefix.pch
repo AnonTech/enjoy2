@@ -23,6 +23,8 @@
 #import "TargetConfig.h"
 #import "TargetController.h"
 #import "TargetKeyboard.h"
+#import "TargetMouseAbsolute.h"
+#import "TargetScript.h"
 #import "TargetMouseMove.h"
 #import "TargetMouseBtn.h"
 #import "TargetMouseScroll.h"

@@ -13,6 +13,7 @@
 	IBOutlet NSWindow* window;
 	IBOutlet TargetController* targetController;
 	BOOL hasKey;
+    unsigned long mods;
 	int vk;
 	NSString* descr;
 	BOOL enabled;
@@ -20,6 +21,7 @@
 
 @property(readonly) BOOL hasKey;
 @property(readwrite) int vk;
+@property(readwrite) unsigned long mods;
 @property(readonly) NSString* descr;
 @property(readwrite) BOOL enabled;
 

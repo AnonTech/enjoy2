@@ -13,7 +13,12 @@
 	if(self= [ super init]) {
 		subActions = NULL;
 		index = newIndex;
-		name = [[NSString alloc] initWithFormat: @"Button %d %@", (index+1), newName];
+        if(NULL!=newName) {
+            name = [[NSString alloc] initWithFormat: @"Button %d %@", (index+1), newName];
+        } else {
+            name = [[NSString alloc] initWithFormat: @"Button %d", (index+1)];
+        }
+		
 	}
 	return self;
 }
